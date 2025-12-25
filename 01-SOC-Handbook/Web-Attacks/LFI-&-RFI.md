@@ -1,8 +1,3 @@
-Here is **Entry #05** for your handbook.
-
-This entry covers two closely related concepts. While they look similar in logs, the mechanism (and the remediation) differs slightly.
-
-***
 
 # 📘 SOC Analyst Handbook: Detecting RFI & LFI Attacks
 
@@ -130,5 +125,5 @@ As a SOC Analyst, you are looking for **path traversal characters** or **URL sch
     *   LFI is not just about reading files. If an attacker can upload a file (like a profile picture) containing PHP code, then use LFI to include that profile picture... the code executes. This turns LFI into **Remote Code Execution (RCE)**.
 
 
-![log example](../../assets/lfi1.png)
+<img src="../../assets/lfi1.png" width="600">
 ![log example](../../assets/rfi1.png)

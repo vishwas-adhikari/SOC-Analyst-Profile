@@ -51,7 +51,7 @@ As a SOC Analyst, you are rarely looking at the code; you are looking at **Logs*
     *   `%23` = `#`
     *   `%3D` = `=`
 
-![log example](./assets/sql1.png)
+![log example](../../assets/sql1.png)
 
 
 

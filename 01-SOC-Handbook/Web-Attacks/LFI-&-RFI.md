@@ -126,4 +126,4 @@ As a SOC Analyst, you are looking for **path traversal characters** or **URL sch
 
 
 <img src="../../assets/lfi1.png" width="600">
-![log example](../../assets/rfi1.png)
+<img src="../../assets/rfi1.png" width="600">

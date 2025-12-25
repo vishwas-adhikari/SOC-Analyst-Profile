@@ -118,3 +118,23 @@ Attackers often use tools (like **Burp Suite Intruder** or **Wfuzz**) to cycle t
 3.  **WAFs miss this:**
     *   Traditional Web Application Firewalls (WAF) struggle with IDOR because the request `GET /invoice?id=5` looks perfectly legal.
     *   **You** (the human analyst) or specialized "Behavioral Analytics" rules are the main defense here.
+
+### TL;DR for Interviews / Quick Recall
+*   **What:** IDOR = Accessing data intended for others by changing an ID.
+*   **Why:** Failure to check **Authorization** (Ownership) on the specific object requested.
+*   **Impact:** PII leakage, unauthorized actions (delete/edit data).
+*   **Detection:** Sequential access (`id=1, id=2`), high volume of unique IDs from one IP, varying response sizes.
+*   **Response:** Block IP → Analyze logs to calculate how many records were exposed.
+*   **Fix:** **Object-Level Authorization Checks** (Is `Current_User == Object_Owner`?) + Use UUIDs/GUIDs.
+
+### 🎯 MITRE ATT&CK Mapping
+*   **T1595:** Active Scanning (Enumeration).
+*   **T1213:** Data from Information Repositories.
+*   **T1078:** Valid Accounts (Abusing valid access to see invalid data).
+
+### ⚠️ Avoid Assumptions
+*   **WAF will catch it:** Most WAFs **cannot** detect IDOR because the request looks perfectly legal (e.g., `GET /invoice?id=5`).
+*   **Using UUIDs = Fixed:** No. UUIDs (`550e84...`) make *guessing* harder, but if an attacker leaks a UUID, they can still access it if the Auth check is missing.
+*   **HTTP 200 = Success:** A website might return "200 OK" but display a "Permission Denied" text. You must compare response **sizes**, not just codes.
+
+---

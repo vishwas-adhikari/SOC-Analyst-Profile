@@ -127,3 +127,22 @@ User-Agent: () { :;}; echo "NS:" $(</etc/passwd)
 3.  **False Positives:**
     *   The word `cat` or `dir` might appear in legitimate text (e.g., `/products?category=cat-food`).
     *   **Differentiation:** Look for the **Operators** (`|`, `;`, `$`). Without the operators, the keywords are usually harmless.
+
+
+### TL;DR for Interviews / Quick Recall
+*   **What:** CMDi = User input executes OS system commands.
+*   **Why:** App passes unsafe input to system functions like `exec()` or `system()`.
+*   **Impact:** **RCE (Remote Code Execution)** - Full server takeover.
+*   **Detection:** Separators (`;`, `|`, `&&`) + System commands (`whoami`, `cat`, `wget`, `powershell`).
+*   **Response:** **Isolate Host Immediately** (High Criticality) → Check for backdoor accounts/connections.
+*   **Fix:** Avoid system calls (use language libraries) + Strict Allow-listing (e.g., alphanumeric only).
+
+### 🎯 MITRE ATT&CK Mapping
+*   **T1059.004:** Command and Scripting Interpreter: Unix Shell.
+*   **T1059.003:** Command and Scripting Interpreter: Windows Command Shell.
+*   **T1190:** Exploit Public-Facing Application.
+
+### ⚠️ Avoid Assumptions
+*   **No Output ≠ Failed Attack:** "Blind" injection works silently. They might be creating a backdoor user without printing text to the screen.
+*   **Wrong OS Commands:** If you see `C:\Windows` on a Linux server log, it's likely an automated scanner "spraying" payloads. It failed, but the intent is malicious.
+*   **WAF Blocking:** Simple WAFs block `;` but might miss `$()` or pipe `|`.

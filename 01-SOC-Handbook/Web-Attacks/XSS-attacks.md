@@ -116,3 +116,24 @@ In the LetsDefend lab scenario, the logs showed specific patterns indicating aut
 
 3.  **False Positives in Referers:**
     *   Sometimes valid marketing URLs contain tracking scripts or complex query strings. Always decode to verify if it is executable code or just a tracking ID.
+
+
+### TL;DR for Interviews / Quick Recall
+*   **What:** XSS = Attacker runs malicious scripts in the victim's browser.
+*   **Why:** Application takes user input and displays it (reflects/stores) without sanitization/escaping.
+*   **Impact:** Session hijacking (cookie theft), phishing redirects, defacement.
+*   **Detection:** HTML tags (`<script>`, `<img>`, `<iframe>`) or JS keywords (`alert`, `document.cookie`) in logs.
+*   **Response:** Block IP → Check if payload is Stored or Reflected → Revoke compromised sessions.
+*   **Fix:** **Output Encoding** (convert `<` to `&lt;`) + Content Security Policy (CSP).
+
+### 🎯 MITRE ATT&CK Mapping
+*   **T1059.007:** Command and Scripting Interpreter: JavaScript.
+*   **T1189:** Drive-by Compromise.
+*   **T1539:** Steal Web Session Cookie.
+
+### ⚠️ Avoid Assumptions
+*   **HTTP 200 OK ≠ Successful Attack:** Modern browsers (Chrome/Edge) have built-in XSS filters that might block the script even if the server sent it.
+*   **Reflected XSS is "Low Risk":** False. If used in a phishing email to an Admin, it causes full compromise.
+*   **WAF caught it ≠ Safe:** Attackers use "Polyglots" (complex strings) that often bypass regex-based WAFs.
+
+---

@@ -124,3 +124,24 @@ If you see a suspicious log, follow this workflow:
 3.  **Blind SQLi is Silent:**
     *   If an attacker is doing "Time-Based Blind SQLi", the status code will be 200 OK and the size will be normal.
     *   **Detection:** Look at the **"Time Taken"** field in the logs. If a specific request took 10,000ms (10 seconds) while others take 200ms, that is a massive red flag.
+
+
+### TL;DR for Interviews / Quick Recall
+*   **What:** SQL injection = user input manipulates the database query.
+*   **Why:** Application trusts user input + concatenates strings instead of using parameterized queries.
+*   **Impact:** Data theft (dumping DB), Auth bypass (login without password), RCE (via `xp_cmdshell`).
+*   **Detection:** SQL keywords (`UNION`, `SELECT`), logic (`OR 1=1`), or syntax errors in logs.
+*   **Response:** Block IP → Decode payload → Check response size (did data leave?).
+*   **Fix:** **Parameterized Queries** (Prepared Statements) + Input Validation.
+
+### 🎯 MITRE ATT&CK Mapping
+*   **T1190:** Exploit Public-Facing Application.
+*   **T1059:** Command and Scripting Interpreter (if RCE occurs).
+*   **T1041:** Exfiltration Over C2 Channel (if data is dumped).
+
+### ⚠️ Avoid Assumptions
+*   **Large Response Size ≠ Always Data Theft:** Sometimes the error message itself is huge (stack trace).
+*   **HTTP 500 ≠ Failed Attack:** A 500 error might mean the injection worked but broke the page syntax. The DB might still have processed part of it.
+*   **No "Union Select" ≠ Safe:** Blind SQLi extracts data byte-by-byte without showing it on screen.
+
+---

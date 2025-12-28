@@ -111,9 +111,11 @@ As a SOC Analyst, you are looking for **URLs inside of URLs**. You need to spot 
 ### 💻 6. Code Lab: Vulnerable vs. Secure
 
 ![Vulnerable Code](../../assets/openredirectvuln.png)
+
 **The Flaw:** The code directly assigns the user-supplied `url` parameter to the PHP `$targetUrl` variable. It then passes this variable immediately into the `header("Location: ...")` function without checking if the URL is internal or external.
 
 ![Fixed Code](../../assets/openredirectfixed.png)
+
 **The Fix:** The code implements `filter_var` with the `FILTER_VALIDATE_URL` flag. While this ensures the input is a valid URL format, a **production-grade fix** should also include a "Whitelist" check to ensure the domain matches the company's specific trusted domains, rather than just any valid URL.
 
 ---

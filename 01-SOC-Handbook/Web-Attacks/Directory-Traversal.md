@@ -107,9 +107,11 @@ As a SOC Analyst, you are hunting for **Traversal Sequences** and **System File 
 ### 💻 6. Code Lab: Vulnerable vs. Secure
 
 ![Vulnerable Code](../../assets/dirtrvvuln.png)
+
 **The Flaw:** The code directly concatenates the user input `$file` to the `$document_root`. It performs **no validation** on the input. If the user sends `../../etc/passwd`, the code blindly builds that path and tries to read it.
 
 ![Fixed Code](../../assets/dirtrvfixed.png)
+
 **The Fix:**
 1.  **Validation:** It uses regex (`preg_match`) to allow *only* alphanumeric characters (no dots or slashes allowed).
 2.  **Resolution:** It uses `realpath()` to resolve the absolute path (e.g., converting `../` to the actual folder).

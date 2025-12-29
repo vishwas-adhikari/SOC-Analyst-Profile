@@ -1,8 +1,3 @@
-Here is **Entry #08**.
-
-I have added the dedicated **Impact** section as requested. I also included the Python script in the "Code Lab" section because understanding how the attacker automates the process (the script you provided) is just as important as seeing the vulnerable server code.
-
-***
 
 # 📘 SOC Analyst Handbook: Detecting Brute Force Attacks
 

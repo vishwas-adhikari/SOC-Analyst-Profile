@@ -113,6 +113,8 @@ User-Agent: Mozilla/5.0... (Suspiciously short UA)
 *   *Without SSL Inspection:* You cannot see what they searched for or the full URL path (`google.com/search?q=...`). You only see the domain.
 *   *With SSL Inspection:* You can see the full request.
 
+![log example](../../assets/proxy.png)
+
 **Step 2: Check Frequency (Beaconing)**
 *   Malware is automated. It doesn't browse randomly.
 *   Look for requests occurring at exact intervals (e.g., every 300 seconds + jitter).

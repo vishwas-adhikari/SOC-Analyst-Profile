@@ -1,21 +1,20 @@
-# Case ID 115 - SOC165 - Possible SQL Injection Payload Detected
----
 
-### Alert Summary
+#  Case ID 115: SOC165 - Possible SQL Injection Payload Detected
+
+##  Alert Summary
 - **Type:** Web Attack (SQL Injection)
 - **Severity:** High
 - **Source:** SIEM / IDS Alert
 - **Status:** True Positive
+<img width="1308" height="475" alt="image" src="https://github.com/user-attachments/assets/8fd05b79-4f2e-49b1-a5a3-feb0879f725d" />
 
-###  Investigation and Analysis
+
+## Investigation and Analysis
 On February 25, 2022, at 11:34 a.m., a high-severity alert was triggered indicating a potential SQL Injection (SQLi) attempt against **WebServer1001** (172.16.17.18). The attack originated from the external IP address **167.99.169.17**.
 
-![alt text](image-2.png)
+<img width="992" height="364" alt="image" src="https://github.com/user-attachments/assets/99399a5f-b81d-448e-aeb1-3bbee1025a3e" />
 
-![alt text](image-3.png)
-
-![log example](../img/ref.png)
-
+<img width="628" height="343" alt="image" src="https://github.com/user-attachments/assets/2980757f-880d-4929-8015-19b1671d2310" />
 
 
 ### 1. Reputation Analysis
@@ -23,7 +22,8 @@ I began the investigation by performing a reputation check on the source IP (**1
 - **VirusTotal:** 11/94 security vendors flagged the IP as malicious.
 - **Geographic Data:** The IP was identified as a known source of malicious activity targeting web applications.
 
-![alt text](image-1.png)
+<img width="1032" height="435" alt="image" src="https://github.com/user-attachments/assets/d1a81c82-7f10-4708-8c83-2870905620ea" />
+
 
 ### 2. Payload Deobfuscation
 The alert captured a suspicious GET request to the `/search/` directory. The query parameter `q` contained URL-encoded characters. I utilized **CyberChef** to decode the string:
@@ -33,6 +33,7 @@ The alert captured a suspicious GET request to the `/search/` directory. The que
 
 This is a classic "tautology-based" SQL injection payload. The attacker attempted to manipulate the back-end SQL query to return a 'true' result for all rows, which is commonly used to bypass authentication or extract unauthorized data from a database.
 
+![Insert Screenshot: CyberChef URL Decoding]
 
 ### 3. Log Correlation & Impact Assessment
 I pivoted to the SIEM **Log Management** section to analyze the server's response to this request.
@@ -42,7 +43,7 @@ I pivoted to the SIEM **Log Management** section to analyze the server's respons
 
 The **HTTP 500** status code suggests that the malicious input caused a server-side crash or a syntax error in the database engine, rather than successfully executing and returning data (which would typically result in a 200 OK status). To ensure no further compromise occurred, I inspected the endpoint's command history and process logs; no unauthorized lateral movement or secondary payloads were detected.
 
-## 🧪 Indicators of Compromise (IOCs)
+##  Indicators of Compromise (IOCs)
 | Type | Value | Description |
 | :--- | :--- | :--- |
 | **IP** | 167.99.169.17 | Malicious Source IP (Attacker) |
@@ -56,7 +57,7 @@ The **HTTP 500** status code suggests that the malicious input caused a server-s
 - **Endpoint Security:** Command History & Log Review
 - **Incident Response:** Playbook Execution
 
-##  Playbook Answers
+##  Playbook Solutions
 1. **Initial Assessment:** Identified the alert as a potential SQLi via URL parameters.
 2. **Reputation Check:** Confirmed the source IP has a history of malicious activity.
 3. **Payload Analysis:** Decoded the URL to confirm the SQLi attempt.
@@ -76,12 +77,6 @@ However, the fact that the request reached the application indicates a lack of r
 4. **IP Blocking:** Add the malicious IP (**167.99.169.17**) to the organizational blocklist at the firewall level.
 5. **Error Message Masking:** Configure the web server to return generic error pages instead of "500 Internal Server Error" to prevent attackers from using verbose errors for database fingerprinting.
 
-
+---
 **Status:** Closed - True Positive / No Impact
-
-**Analyst:** Vishwas Adhikari
-
-![alt text](image-4.png)
-
-
-
+**Analyst:** 

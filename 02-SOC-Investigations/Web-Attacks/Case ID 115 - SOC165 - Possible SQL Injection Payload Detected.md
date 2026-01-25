@@ -75,3 +75,6 @@ However, the fact that the request reached the application indicates a lack of r
 ---
 **Status:** Closed - True Positive / No Impact
 **Analyst:** Vishwas Adhikari
+
+![](Pasted%20image%2020260125162853.png)
+

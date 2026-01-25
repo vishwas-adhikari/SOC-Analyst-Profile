@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "bde83917941c5861",
+        "id": "8bcb4edd5866678e",
         "type": "tabs",
         "children": [
           {
-            "id": "0b1f3f01cd90f8b4",
+            "id": "170895a23ac22948",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -177,11 +177,17 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0b1f3f01cd90f8b4",
+  "active": "170895a23ac22948",
   "lastOpenFiles": [
+    "Untitled.base",
+    "Untitled.canvas",
+    "Web-Attacks/Case ID 115 - SOC165 - Possible SQL Injection Payload Detected.md",
+    "Web-Attacks/images/Pasted image 20260125163403.png",
+    "Web-Attacks/images/Pasted image 20260125162853.png",
     "Web-Attacks/images/Pasted image 20260125024323.png",
     "Web-Attacks/images/Pasted image 20260125024255.png",
     "Web-Attacks/images/Pasted image 20260125024040.png",
@@ -191,12 +197,8 @@
     "Web-Attacks/images/Pasted image 20260125024323.png",
     "Web-Attacks/images/Pasted image 20260125024255.png",
     "Web-Attacks/images/Pasted image 20260125024112.png",
-    "Web-Attacks/images/Pasted image 20260125024040.png",
-    "Web-Attacks/images/Pasted image 20260125023757.png",
     "Web-Attacks/images",
     "Case ID 115 - SOC165 - Possible SQL Injection Payload Detected.md",
-    "Web-Attacks/Case ID 115 - SOC165 - Possible SQL Injection Payload Detected.md",
-    "Pasted image 20260125023725.png",
     "Web-Attacks"
   ]
 }

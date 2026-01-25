@@ -14,6 +14,9 @@ On February 25, 2022, at 11:34 a.m., a high-severity alert was triggered indicat
 
 ![alt text](image-3.png)
 
+![log example](../img/ref.png)
+
+
 
 ### 1. Reputation Analysis
 I began the investigation by performing a reputation check on the source IP (**167.99.169.17**) using **VirusTotal**, **Cisco Talos**, and **AbuseIPDB**. 

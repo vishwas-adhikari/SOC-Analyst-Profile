@@ -11,10 +11,14 @@
             "id": "0b1f3f01cd90f8b4",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Web-Attacks/Case ID 115 - SOC165 - Possible SQL Injection Payload Detected.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Case ID 115 - SOC165 - Possible SQL Injection Payload Detected"
             }
           }
         ]
@@ -176,8 +180,14 @@
       "bases:Create new base": false
     }
   },
-  "active": "0b1f3f01cd90f8b4",
+  "active": "d7d8e51cd6324948",
   "lastOpenFiles": [
+    "images/Pasted image 20260125024323.png",
+    "images/Pasted image 20260125024255.png",
+    "images/Pasted image 20260125024040.png",
+    "images/Pasted image 20260125024112.png",
+    "images/Pasted image 20260125023757.png",
+    "images",
     "Web-Attacks/images/Pasted image 20260125024323.png",
     "Web-Attacks/images/Pasted image 20260125024255.png",
     "Web-Attacks/images/Pasted image 20260125024112.png",
@@ -186,13 +196,7 @@
     "Web-Attacks/images",
     "Case ID 115 - SOC165 - Possible SQL Injection Payload Detected.md",
     "Web-Attacks/Case ID 115 - SOC165 - Possible SQL Injection Payload Detected.md",
-    "images/Pasted image 20260125024323.png",
-    "images/Pasted image 20260125024255.png",
-    "images/Pasted image 20260125024112.png",
-    "images/Pasted image 20260125024040.png",
     "Pasted image 20260125023725.png",
-    "images/Pasted image 20260125023757.png",
-    "images",
     "Web-Attacks"
   ]
 }

@@ -8,7 +8,7 @@
 - Status: True Positive
 
 ![image](../img/w21.png)
-
+s
 
 
 ## Investigation Steps

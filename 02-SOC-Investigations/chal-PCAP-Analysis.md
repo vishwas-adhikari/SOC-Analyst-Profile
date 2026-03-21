@@ -60,15 +60,15 @@ The analysis confirms that user P13 (192.168.235.137) successfully uploaded a fi
 5. **Endpoint Investigation:** Perform a full forensic scan on P13's workstation to determine if the upload was intentional or if the host has been compromised by a remote actor.
 
 
-  <img width="1129" height="531" alt="1" src="https://github.com/user-attachments/assets/42995440-0295-4c40-8043-92e970fd7546" />
+  <img width="600" height="500" alt="1" src="https://github.com/user-attachments/assets/42995440-0295-4c40-8043-92e970fd7546" />
   
-  <img width="1098" height="499" alt="2" src="https://github.com/user-attachments/assets/c9543653-9b43-442c-9c1c-d76a1612e88c" />
+  <img width="600" height="499" alt="2" src="https://github.com/user-attachments/assets/c9543653-9b43-442c-9c1c-d76a1612e88c" />
   
-  <img width="776" height="673" alt="3" src="https://github.com/user-attachments/assets/d7059ca3-2cbd-490f-827c-191f0a656612" />
+  <img width="600" height="500" alt="3" src="https://github.com/user-attachments/assets/d7059ca3-2cbd-490f-827c-191f0a656612" />
   
-  <img width="916" height="731" alt="4" src="https://github.com/user-attachments/assets/554deab8-36d3-4705-a120-28f050d8dcd5" />
+  <img width="600" height="500" alt="4" src="https://github.com/user-attachments/assets/554deab8-36d3-4705-a120-28f050d8dcd5" />
   
-  <img width="1110" height="547" alt="5" src="https://github.com/user-attachments/assets/c9396916-49e8-46ec-89b1-bd5af95c9643" />
+  <img width="600" height="500" alt="5" src="https://github.com/user-attachments/assets/c9396916-49e8-46ec-89b1-bd5af95c9643" />
 
 
 

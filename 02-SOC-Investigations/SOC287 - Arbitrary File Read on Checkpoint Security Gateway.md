@@ -1,6 +1,4 @@
-This is a vital addition to a professional portfolio. Showing a "Mistakes" or "Lessons Learned" section demonstrates **intellectual honesty, technical growth, and a deep understanding of the analytical process.** It proves to a hiring manager that you don't just follow playbooks blindly—you understand the "why" behind the logs.
 
----
 
 # SOC287 - Arbitrary File Read on Checkpoint Security Gateway [CVE-2024-24919] — Case #263
 

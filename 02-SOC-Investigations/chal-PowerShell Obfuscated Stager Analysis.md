@@ -99,6 +99,22 @@ The incident is a confirmed **True Positive**. The script is a highly functional
 ## Skills & Tools Used
 CyberChef (Base64/UTF-16LE Decoding), PowerShell Script Analysis, De-obfuscation, Threat Intelligence, Traffic Analysis, MITRE ATT&CK Mapping.
 
-## Mistakes and Lessons Learned
-- **Initial Confusion:** Initially, the XOR key `$K` seemed like random data. 
-- **Learning:** Realized that `$K` is used as a symmetric key for the `-BXor` operation. This taught me that any time a script defines a random-looking string and then uses the `%` (modulo) and `-BXor` operators, it is performing a decryption loop on a downloaded payload. scrutinizing the mathematical operators in the script is key to identifying the decryption method.
+---
+
+### PowerShell Command-Line Flags & Evasion Tactics Reference
+
+| Flag / Short Form | Full Name | Description | Security & Malware Context |
+| :--- | :--- | :--- | :--- |
+| **-NoP** | `-NoProfile` | Prevents PowerShell from loading the current user's profile scripts (`profile.ps1`). | **Evasion & Stability:** Attackers use this to ensure their script runs predictably without being interrupted or logged by custom user configurations or defensive hooks placed in the user profile. |
+| **-NonI** | `-NonInteractive` | Runs PowerShell without presenting an interactive prompt to the user. | **Stealth:** If a payload encounters an error or prompts for user input (e.g., "Are you sure? [Y/N]"), the script will silently fail instead of hanging or popping up a visible prompt that alerts the victim. |
+| **-W Hidden** | `-WindowStyle Hidden` | Sets the console window style to hidden. (Other options: `Normal`, `Minimized`, `Maximized`). | **Stealth:** Ensures no terminal window flashes or stays open on the victim's desktop during execution, keeping the attack invisible. |
+| **-Enc**, **-e**, **-ec** | `-EncodedCommand` | Accepts a Base64-encoded string version of a command. | **Obfuscation:** Used heavily to hide the script's true intent from basic command-line monitoring (Event ID 4688) and to avoid parsing errors with complex quotes and special characters. |
+| **-sta** | `-STA` | Starts PowerShell using a Single-Threaded Apartment. | **Compatibility:** Some malicious scripts interact with Windows COM objects (like Internet Explorer or Clipboard APIs) that require a single-threaded environment to function correctly. |
+| **-ep Bypass**, **-ex** | `-ExecutionPolicy Bypass` | Temporarily bypasses the system's execution policy for the current session. | **Bypass:** Execution Policies (like `Restricted`) are meant to stop unsigned scripts. Attackers use this flag to run dropped `.ps1` files without changing global registry settings or requiring administrative privileges. |
+| **-c** | `-Command` | Executes the specified commands (and any parameters) as though they were typed at the PowerShell command prompt. | **Fileless Execution:** Allows attackers to pass an entire malicious script directly into memory via the command line without ever dropping a `.ps1` file to the disk. |
+| **-NoLogo** | `-NoLogo` | Hides the copyright banner at startup. | **Clean Output:** Often combined with other stealth flags to prevent unnecessary text from being output or logged to standard streams. |
+| **-NoExit** | `-NoExit` | Does not exit the PowerShell environment after running the startup commands. | **Persistence:** Sometimes used by attackers when dropping an interactive reverse shell, ensuring the process stays alive to accept remote commands. |
+| **-Mta** | `-MTA` | Starts PowerShell using a Multi-Threaded Apartment. | **Compatibility:** Used when a payload requires multiple threads to execute concurrently (less common than `-sta` but still seen in advanced loaders). |
+| **-f** | `-File` | Runs the specified script file. | **Execution:** Used when the attacker has successfully dropped a `.ps1` payload to the disk (e.g., in `C:\Windows\Temp\`) and needs to trigger it. |
+
+**Pro Tip for your Portfolio:** Threat actors rarely use the full names of these parameters because they want to keep the command line string as short as possible to avoid hitting character limits in certain execution methods (like WMI or Scheduled Tasks). You will almost always see them chained together like this: `powershell.exe -nop -w hidden -noni -ep bypass -enc [Base64]`.

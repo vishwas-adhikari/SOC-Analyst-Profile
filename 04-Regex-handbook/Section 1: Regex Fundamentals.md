@@ -45,4 +45,6 @@ By default, regex engines are strictly case-sensitive. `Admin` does not equal `a
 
 
 <img width="731" height="684" alt="image" src="https://github.com/user-attachments/assets/7ae85716-dcc4-43ab-ab2c-bf1dcb0108b8" />
+<img width="735" height="683" alt="image" src="https://github.com/user-attachments/assets/ed19edea-452a-4b53-8a75-de442bc9ed82" />
+
 

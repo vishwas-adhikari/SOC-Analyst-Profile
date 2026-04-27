@@ -41,3 +41,8 @@ By default, regex engines are strictly case-sensitive. `Admin` does not equal `a
 *   **Engine:**    PCRE (Splunk) / PCRE2 (Wazuh)
 
 ***
+
+
+
+<img width="731" height="684" alt="image" src="https://github.com/user-attachments/assets/7ae85716-dcc4-43ab-ab2c-bf1dcb0108b8" />
+

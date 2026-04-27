@@ -74,3 +74,6 @@ This section provides a quick-reference table for standard regex operators. Use 
 
 ***
 
+<img width="750" height="600" alt="image" src="https://github.com/user-attachments/assets/8638fb16-b1bf-4d9a-be4e-eadb97754876" />
+
+

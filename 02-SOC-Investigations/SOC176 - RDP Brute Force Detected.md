@@ -71,9 +71,9 @@ The incident is a confirmed **True Positive**. While the initial alert severity 
 
 ## 🖼️ Evidence
 
-<img width="700" height="500" alt="image" src="https://github.com/user-attachments/assets/189f85b6-5910-41ad-a108-42c4319d7686" />
-<img width="700" height="500" alt="image" src="https://github.com/user-attachments/assets/d79f3eb7-9d1a-4118-a936-19d692465d4f" />
-<img width="700" height="500" alt="image" src="https://github.com/user-attachments/assets/d80ef893-1954-4c0e-a9c4-e3682ffe27fe" />
+<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/189f85b6-5910-41ad-a108-42c4319d7686" />
+<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/d79f3eb7-9d1a-4118-a936-19d692465d4f" />
+<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/d80ef893-1954-4c0e-a9c4-e3682ffe27fe" />
 
 
 

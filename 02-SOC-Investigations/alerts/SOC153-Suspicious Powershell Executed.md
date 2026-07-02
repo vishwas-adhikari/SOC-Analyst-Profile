@@ -1,5 +1,5 @@
 
-# SOC153 - Suspicious Powershell Script Executed — Case #238
+# SOC153 - Suspicious Powershell Script Executed 
 
 ## Alert Overview
 - **Severity:** High
@@ -81,12 +81,17 @@ The incident is a confirmed **True Positive**. The user (Tony) downloaded and ex
 3. **Attack Surface Reduction (ASR):** Implement Microsoft Defender ASR rules to block the execution of potentially obfuscated scripts and block untrusted/unsigned executables from running from USB or Webmail directories.
 
 ## Evidence / Screenshots
-- **Execution Policy Bypass Log**  
-![Insert Screenshot: First Log showing the execution policy bypass]
-- **Fileless Execution & Stager Download**  
-![Insert Screenshot: Log showing the IEX(IWR UseBasicParsing) command to kionagranada.com]
-- **InfoStealer C2 Beacon**  
-![Insert Screenshot: Log showing the GET request to the C2 server at 91.236.116.163]
+<img width="752" height="245" alt="image" src="https://github.com/user-attachments/assets/e205c0fa-0deb-4b0c-9563-a4f715b735e6" />
+<img width="588" height="254" alt="image" src="https://github.com/user-attachments/assets/729a9c68-201b-4ecc-9ffb-fb0d43a957fc" />
+<img width="578" height="464" alt="image" src="https://github.com/user-attachments/assets/0aca4e12-638d-4589-936f-f49d4daa6b22" />
+<img width="585" height="349" alt="image" src="https://github.com/user-attachments/assets/1e1969cc-a463-425f-94b6-541c752fa5e1" />
+<img width="572" height="290" alt="image" src="https://github.com/user-attachments/assets/2a248596-5947-4858-a9db-6f52f28f0275" />
+
+
+
+
+
+
 
 ## Skills & Tools Used
 SIEM Log Correlation, EDR Telemetry Triage, PowerShell Malware Analysis, Fileless Execution Analysis, Threat Intelligence (VirusTotal), Host Containment.

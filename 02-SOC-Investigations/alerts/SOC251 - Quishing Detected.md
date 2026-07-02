@@ -1,6 +1,6 @@
 
 
-# SOC251 - Quishing Detected (QR Code Phishing) — Case #214
+# SOC251 - Quishing Detected (QR Code Phishing) 
 
 ## Alert Overview
 - **Severity:** Medium
@@ -80,12 +80,12 @@ The incident is a confirmed **True Positive**. The user received a highly decept
 4. **IPFS Blocking:** Unless there is a strict business requirement, block access to IPFS gateways (`ipfs.io`) at the corporate perimeter, as they are heavily abused for decentralized malware hosting.
 
 ## Evidence / Screenshots
-- **Phishing Email Lure**  
-![Insert Screenshot: Email showing the MFA urgency lure and the QR code]
-- **Threat Intelligence (Sender IP)**  
-![Insert Screenshot: VirusTotal highlighting the malicious reputation of 158.69.201.47]
-- **Log Management Delivery Confirmation**  
-![Insert Screenshot: SIEM log showing the email traversing port 25 to the Exchange server]
+<img width="369" height="138" alt="image" src="https://github.com/user-attachments/assets/b6f5e5d5-4eff-4aaa-8664-6e3413a9f1ff" />
+<img width="700" height="289" alt="image" src="https://github.com/user-attachments/assets/4ff9c677-598b-4504-bcd0-df66f6986719" />
+<img width="757" height="177" alt="image" src="https://github.com/user-attachments/assets/a4adb294-fe62-4585-be01-b92ead44a7ae" />
+
+
+
 
 ## Skills & Tools Used
 Phishing Header Analysis, QR Code Decoding/Deobfuscation, OSINT (VirusTotal), Threat Modeling (Cross-Device Execution), Incident Containment, MITRE ATT&CK Mapping.

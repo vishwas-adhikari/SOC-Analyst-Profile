@@ -84,12 +84,12 @@ The incident is a confirmed **True Positive**. An external threat actor (113.161
 3. **MFA Fatigue Monitoring:** Monitor the account for "MFA Fatigue" attacks, where an attacker continuously spams the user with push notifications hoping they accidentally approve the request.
 
 ## Evidence / Screenshots
-- **VPN Authentication Logs**  
-![Insert Screenshot: Log management showing repeated OTP requests/failures]
-- **Threat Intelligence**  
-![Insert Screenshot: VirusTotal showing the malicious reputation and geolocation of the IP]
-- **Endpoint Triage**  
-![Insert Screenshot: Endpoint Security showing a clean process list for the host Monica]
+<img width="581" height="268" alt="image" src="https://github.com/user-attachments/assets/9e5e9f97-cee1-4242-8c74-f6fa0ffebc80" />
+<img width="295" height="299" alt="image" src="https://github.com/user-attachments/assets/19886c13-9889-4d11-9c31-11796e5d49cb" />
+<img width="577" height="188" alt="image" src="https://github.com/user-attachments/assets/3356c067-1fda-440a-a537-2acd174f6b85" />
+
+
+
 
 ## Skills & Tools Used
 SIEM Log Correlation (Authentication Logs), Identity and Access Management (IAM / MFA Triage), Threat Intelligence (VirusTotal/IP Geolocation), Incident Triage, MITRE ATT&CK Mapping.

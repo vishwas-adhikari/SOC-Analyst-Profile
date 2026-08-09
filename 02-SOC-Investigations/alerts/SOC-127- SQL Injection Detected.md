@@ -25,6 +25,7 @@ SQL Injection (SQLi) occurs when user-supplied input is improperly sanitized, al
 The alert identified a malicious GET request originating from `118.194.247.28` directed at the internal asset `WebServer1000` (172.16.20.12). 
 - **Directionality:** Internet to Company Network.
 - **Device Action:** Allowed.
+<img width="776" height="202" alt="image" src="https://github.com/user-attachments/assets/44e367c6-2a41-4cd0-a14e-cc9360bba48a" />
 
 ### 2. Threat Intelligence Enrichment
 The source IP (`118.194.247.28`) was queried against threat intelligence databases. 
@@ -35,6 +36,11 @@ Using CyberChef (URL Decode), multiple payload variations from this source IP we
 - **Payload 1 (Primary Alert):** Attempted to use a `UNION ALL SELECT` to pull `table_name` from `information_schema.tables`, combined with an XSS script `<script>alert("XSS")</script>`, and concluded with an execution command: `EXEC xp_cmdshell('cat ../../../etc/passwd')#`.
 - **Payload 2 (Log Review):** `(SELECT (CASE WHEN (4611=4629) THEN 1 ELSE (SELECT 4629 UNION SELECT 6288) END))` — A classic Boolean/Time-based Blind SQLi syntax.
 - **Payload 3 (Log Review):** `(SELECT UPPER(XMLType(CHR...)) FROM DUAL)` — An Oracle-specific Error-Based SQLi syntax.
+
+<img width="700" height="377" alt="image" src="https://github.com/user-attachments/assets/f4c7bdb8-ffa8-4d76-92ef-01c32c28a9d1" />
+
+<img width="700" height="386" alt="image" src="https://github.com/user-attachments/assets/b15aefd0-73d5-4370-a7d8-f7d6263f3521" />
+
 
 ### 4. Impact Assessment & Outcome Verification
 To determine if the attack was successful, the HTTP response was evaluated.
@@ -111,9 +117,7 @@ The incident is a confirmed **True Positive**. The external IP `118.194.247.28` 
 CyberChef (URL Decoding), SQL Syntax Analysis, HTTP Log Correlation (Response Size Analysis), Threat Intelligence (VirusTotal), Incident Triage, MITRE ATT&CK Mapping.
 
 
-<img width="776" height="202" alt="image" src="https://github.com/user-attachments/assets/44e367c6-2a41-4cd0-a14e-cc9360bba48a" />
-<img width="700" height="377" alt="image" src="https://github.com/user-attachments/assets/f4c7bdb8-ffa8-4d76-92ef-01c32c28a9d1" />
-<img width="700" height="386" alt="image" src="https://github.com/user-attachments/assets/b15aefd0-73d5-4370-a7d8-f7d6263f3521" />
+
 
 
 

